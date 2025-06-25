@@ -39,24 +39,29 @@ impl<F: Field> Commit<F> {
     }
 }
 
-fn main() {
-    // implement sumcheck for \sum f[i]*g[i] = y.
-    let mut rng = ark_std::test_rng();
-    let l = 20;
-    let f = (0..(1 << l))
-        .map(|_| Fr::rand(&mut rng))
-        .collect::<Vec<_>>();
-    let g = (0..(1 << l))
-        .map(|_| Fr::rand(&mut rng))
-        .collect::<Vec<_>>();
-    // f and g are MLE evaluations over hypercube
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-    let y = f
-        .iter()
-        .zip(g.iter())
-        .fold(Fr::ZERO, |sum, (&x, &y)| sum + x * y);
-    let r = (0..l).map(|_| Fr::rand(&mut rng)).collect::<Vec<_>>();
+    #[test]
+    fn it_works() {
+        let mut rng = ark_std::test_rng();
+        let l = 20;
+        let f = (0..(1 << l))
+            .map(|_| Fr::rand(&mut rng))
+            .collect::<Vec<_>>();
+        let g = (0..(1 << l))
+            .map(|_| Fr::rand(&mut rng))
+            .collect::<Vec<_>>();
+        // f and g are MLE evaluations over hypercube
 
-    let m = prove(f.clone(), g.clone(), &r);
-    verifer(Commit(f), Commit(g), &r, y, m);
+        let y = f
+            .iter()
+            .zip(g.iter())
+            .fold(Fr::ZERO, |sum, (&x, &y)| sum + x * y);
+        let r = (0..l).map(|_| Fr::rand(&mut rng)).collect::<Vec<_>>();
+
+        let m = prove(f.clone(), g.clone(), &r);
+        verifer(Commit(f), Commit(g), &r, y, m);
+    }
 }

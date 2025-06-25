@@ -254,6 +254,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "mv_sumcheck"
+version = "0.1.0"
+dependencies = [
+ "ark-bn254",
+ "ark-ff",
+ "ark-poly",
+ "ark-std",
+]
+
+[[package]]
 name = "num-bigint"
 version = "0.4.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -347,16 +357,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ec0be4795e2f6a28069bec0b5ff3e2ac9bafc99e6a9a7dc3547996c5c816922c"
 
 [[package]]
-name = "sumcheck"
-version = "0.1.0"
-dependencies = [
- "ark-bn254",
- "ark-ff",
- "ark-poly",
- "ark-std",
-]
-
-[[package]]
 name = "syn"
 version = "2.0.103"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -372,6 +372,16 @@ name = "typenum"
 version = "1.18.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1dccffe3ce07af9386bfd29e80c0ab1a8205a2fc34e4bcd40364df902cfa8f3f"
+
+[[package]]
+name = "uni_sumcheck"
+version = "0.1.0"
+dependencies = [
+ "ark-bn254",
+ "ark-ff",
+ "ark-poly",
+ "ark-std",
+]
 
 [[package]]
 name = "unicode-ident"
